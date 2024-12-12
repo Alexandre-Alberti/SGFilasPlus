@@ -47,6 +47,7 @@ for i in range(0,n_grupos):
     tol[i] = stlt.number_input(f'Tempo máximo de espera tolerado (grupo {i+1}):')
     
     NS[i] = stlt.number_input(f'Nível de serviço desejado (grupo {i+1}):')
+    NS[i] = NS[i]/100
     
     tipo_dist = stlt.selectbox(f'Distribuição de probabilidade para o tempo de atendimento (grupo {i+1}):', opcoes_dist)
     
