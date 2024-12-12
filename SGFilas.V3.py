@@ -15,8 +15,8 @@ stlt.subheader('Análise de sistemas de fila com esquema de priorização')
 stlt.text('')
 stlt.text('Insira as informações solicitadas nos campos abaixo ')
 
-n_at = stlt.number_input("Número de servidores:")
-n_at = int(n_at)
+#n_at = stlt.number_input("Número de servidores:")
+#n_at = int(n_at)
 
 n_grupos = stlt.number_input("Número de grupos para segmentação:")
 n_grupos = int(n_grupos)
