@@ -355,7 +355,7 @@ n_ger = 2
 taxa_mut = 0.3
 
 def fitness(n_att, T_zero_teste, horizonte):
-    fila_sim = fila(n_att, T_zero_teste, horizonte)[0]
+    fila_sim = fila(n_att, T_zero_teste, horizonte)
     tempos_medios = fila_sim[1]
     NSr = fila_sim[0]
     NSd = NS
