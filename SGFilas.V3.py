@@ -490,12 +490,16 @@ def recomenda():
 if stlt.button("Obter recomendação"):
     with stlt.spinner("Aguarde, o cálculo pode levar bastante tempo"):
         solucao = recomenda()
-        stlt.write(f"Solução: {solucao}")
+        #stlt.write(f"Solução: {solucao}")
         #TESTE = fila(n_at, n_grupos, taxas, tipos, parametros, T_zero, tol)
     
     # Exibir os resultados
-    #stlt.subheader("Resultados da Simulação")
-    #for i in range(0,n_grupos):
-        #stlt.write(f"Nível de serviço alcançado para o Grupo {i + 1}: {TESTE[0][i]*100}%")
-        #stlt.write(f"Tempo médio de espera mais atendimento para o Grupo {i + 1}: {TESTE[1][i]}") 
+    stlt.subheader("Recomendação")
+    for i in range(0,n_grupos):
+        stlt.write(f"Grupo {i+1}")
+        stlt.write(f"Tempo para realocação para o grupo de atendimento: {solucao[0][i]}")
+        stlt.write(f"Nível de serviço: {solucao[1][i]*100}%")
+        stlt.write(f"Tempo médio de espera mais atendimento: {solucao[2][i]}")
+        stlt.write(f"")
+        
     
