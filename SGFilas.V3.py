@@ -64,7 +64,7 @@ for i in range(0,n_grupos):
         parametros[i,4] = stlt.number_input(f'Moda (grupo {i+1}):')
         parametros[i,5] = stlt.number_input(f'Tempo máximo (grupo {i+1}):')
 
-stlt.write(f"Níveis, {NS}")
+#stlt.write(f"Níveis, {NS}")
 #função de apoio
 def soma_parcial(a,n):
     soma = 0
