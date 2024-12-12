@@ -455,42 +455,46 @@ def tempos_transicao(n_att):
     return T_zero_testes[0]
 
 #testando o número de atendentes
-parada_3 = 0
-n_atendentes = n_at_min-1
 
-while parada_3 == 0:
-    n_atendentes = n_atendentes+1
-    print('numero de atendentes:', n_atendentes)
-    
-    resultado_n = tempos_transicao(n_atendentes)
-    
-    tempos_T = np.zeros(n_grupos)
-    for i in range(0,n_grupos):
-        tempos_T[i] = resultado_n[i]
-    
-    fila_sim = fitness(n_atendentes, tempos_T, 10)
-    niveis_servico = fila_sim[0]
-    tempos_medios = fila_sim[3]
-    
-    print('proposta para tempos de transição', tempos_T)
-    print('níveis de serviço estimados', niveis_servico)
-    print('tempos médios', tempos_medios)
-    if fila_sim[2] == 0:
-        print('solução não adequada, avaliar a possibilidade de incluir mais atendentes')
-    else:
-        print('solução adequada')
-        parada_3 = 1
+def recomenda():
+    parada_3 = 0
+    n_atendentes = n_at_min-1
 
+    while parada_3 == 0:
+        n_atendentes = n_atendentes+1
+        print('numero de atendentes:', n_atendentes)
+    
+        resultado_n = tempos_transicao(n_atendentes)
+    
+        tempos_T = np.zeros(n_grupos)
+        for i in range(0,n_grupos):
+            tempos_T[i] = resultado_n[i]
+    
+        fila_sim = fitness(n_atendentes, tempos_T, 10)
+        niveis_servico = fila_sim[0]
+        tempos_medios = fila_sim[3]
+    
+        print('proposta para tempos de transição', tempos_T)
+        print('níveis de serviço estimados', niveis_servico)
+        print('tempos médios', tempos_medios)
+        if fila_sim[2] == 0:
+            print('solução não adequada, avaliar a possibilidade de incluir mais atendentes')
+        else:
+            print('solução adequada')
+            parada_3 = 1
+
+    return (tempos_T, niveis_servico, tempos_medios)
 
 # Botão para executar o teste
 if stlt.button("Obter recomendação"):
     with stlt.spinner("Aguarde, o cálculo pode levar bastante tempo"):
-        # Executar a simulação
+        solucao = recomenda()
+        stlt.write(f"Solução: {solucao}")
         #TESTE = fila(n_at, n_grupos, taxas, tipos, parametros, T_zero, tol)
     
     # Exibir os resultados
     #stlt.subheader("Resultados da Simulação")
     #for i in range(0,n_grupos):
         #stlt.write(f"Nível de serviço alcançado para o Grupo {i + 1}: {TESTE[0][i]*100}%")
-        #stlt.write(f"Tempo médio de espera mais atendimento para o Grupo {i + 1}: {TESTE[1][i]}")
+        #stlt.write(f"Tempo médio de espera mais atendimento para o Grupo {i + 1}: {TESTE[1][i]}") 
     
