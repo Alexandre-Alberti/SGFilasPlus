@@ -349,9 +349,9 @@ for i in range(0,n_grupos):
 n_at_min = int(n_at_min) + 1
 
 #Otimização por GA com número fixo de atendentes
-pop = 10
-pres = 2
-n_ger = 2
+pop = 50
+pres = 6
+n_ger = 10
 taxa_mut = 0.3
 
 def fitness(n_att, T_zero_teste, horizonte):
@@ -389,9 +389,9 @@ def tempos_transicao(n_att):
             T_zero_testes[i][j] = T_zero_sorteio
         
         if n_att == n_at_min:
-            fitness_ = fitness(n_att,T_zero_obs,50)
+            fitness_ = fitness(n_att,T_zero_obs,5000)
         else:
-            fitness_ = fitness(n_att,T_zero_obs,10)
+            fitness_ = fitness(n_att,T_zero_obs,1000)
             
         for j in range(n_grupos, 2*n_grupos):
             T_zero_testes[i][j] = fitness_[0][j-n_grupos] #dados dos níveis de serviço
@@ -435,9 +435,9 @@ def tempos_transicao(n_att):
                 npx = npx+1
             
             if n_att == n_at_min:
-                fitness_ = fitness(n_att,T_zero_obs,50)
+                fitness_ = fitness(n_att,T_zero_obs,5000)
             else:
-                fitness_ = fitness(n_att,T_zero_obs,10)
+                fitness_ = fitness(n_att,T_zero_obs,1000)
                 
             for x in range(n_grupos, 2*n_grupos):
                 T_zero_testes[j][x] = fitness_[0][x-n_grupos] #dados dos níveis de serviço
@@ -471,7 +471,7 @@ def recomenda():
         for i in range(0,n_grupos):
             tempos_T[i] = resultado_n[i]
     
-        fila_sim = fitness(n_atendentes, tempos_T, 10)
+        fila_sim = fitness(n_atendentes, tempos_T, 10000)
         niveis_servico = fila_sim[0]
         tempos_medios = fila_sim[3]
     
